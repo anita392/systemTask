@@ -8,6 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 
 import { MatStepperModule } from '@angular/material/stepper';
+import { DefaultErrorMatcher } from './default.error-matcher';
+import { ErrorStateMatcher } from '@angular/material/core';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -19,7 +21,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     ReactiveFormsModule,
     MatStepperModule,
   ],
-  providers: [],
+  providers: [{ provide: ErrorStateMatcher, useClass: DefaultErrorMatcher }],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}
